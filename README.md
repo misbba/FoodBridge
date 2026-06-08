@@ -28,7 +28,9 @@ Features
 - mvnw / mvnw.cmd - Maven wrapper files
 
 Purpose
+
 The main objective of FoodBridge is to reduce food wastage by creating a platform where excess food can be donated and distributed to those who need it.
 
 Developed By
+
 Misbbahoonnishaa A - FoodBridge
