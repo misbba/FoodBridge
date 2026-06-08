@@ -3,6 +3,7 @@ FoodBridge – Smart Food Donation and Distribution Management System
 
 
 Project Overview
+
 FoodBridge is a food donation and distribution platform developed to help connect food donors with people or organizations in need. The system helps reduce food waste and supports efficient food sharing.
 
 Features
