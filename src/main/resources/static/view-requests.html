@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Requests</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            background:#f4f7f6;
+            margin:0;
+        }
+
+        .header{
+            background:#2e7d32;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+        .menu{
+            text-align:center;
+            background:white;
+            padding:15px;
+        }
+
+        .menu a{
+            text-decoration:none;
+            color:#2e7d32;
+            margin:10px;
+            font-weight:bold;
+        }
+
+        .card{
+            background:white;
+            margin:15px;
+            padding:15px;
+            border-radius:10px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="header">
+    <h1>FoodBridge - Requests</h1>
+</div>
+
+<div class="menu">
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/donate-food.html">Donate</a>
+    <a href="/request-food.html">Request</a>
+    <a href="/claim-food.html">Claim</a>
+    <a href="/view-donations.html">Donations</a>
+    <a href="/view-requests.html">Requests</a>
+    <a href="/view-claims.html">Claims</a>
+    <a href="/login.html">Logout</a>
+</div>
+
+<div id="requests"></div>
+
+<script>
+    fetch('/requests')
+        .then(response => response.json())
+        .then(data => {
+
+            let output = "";
+
+            data.forEach(request => {
+                output += `
+<div class="card">
+ID: ${request.id}<br>
+Requester: ${request.requesterName}<br>
+Food: ${request.foodNeeded}<br>
+Location: ${request.location}
+</div>
+`;
+            });
+
+            document.getElementById("requests").innerHTML = output;
+        });
+</script>
+
+</body>
+</html>

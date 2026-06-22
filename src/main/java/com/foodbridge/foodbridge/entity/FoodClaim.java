@@ -1,19 +1,22 @@
 package com.foodbridge.foodbridge.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "food_claim")
 public class FoodClaim {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "claimer_name")
     private String claimerName;
+
+    @Column(name = "food_name")
     private String foodName;
+
+    @Column(name = "location")
     private String location;
 
     public Long getId() {

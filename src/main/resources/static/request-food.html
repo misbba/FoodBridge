@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Food - FoodBridge</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color:#f4f7f6;
+            margin:0;
+        }
+
+        .header{
+            background-color:#2e7d32;
+            color:white;
+            text-align:center;
+            padding:20px;
+        }
+
+        .container{
+            width:400px;
+            margin:30px auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+        }
+
+        input{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            margin-bottom:15px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#2e7d32;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        .menu{
+            text-align:center;
+            background:white;
+            padding:15px;
+        }
+
+        .menu a{
+            text-decoration:none;
+            color:#2e7d32;
+            margin:10px;
+            font-weight:bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h1>FoodBridge</h1>
+    <h2>Request Food</h2>
+</div>
+
+<div class="menu">
+    <a href="/dashboard.html">Dashboard</a>
+    <a href="/donate-food.html">Donate</a>
+    <a href="/claim-food.html">Claim</a>
+    <a href="/view-donations.html">Donations</a>
+</div>
+
+<div class="container">
+
+    <form action="/requestFood" method="post">
+
+        <label>Requester Name</label>
+        <input type="text" name="requesterName" placeholder="Enter requester name">
+
+        <label>Food Needed</label>
+        <input type="text" name="foodName" placeholder="Enter food needed">
+
+        <label>Location</label>
+        <input type="text" name="location" placeholder="Enter location">
+
+        <button type="submit">Request Food</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
