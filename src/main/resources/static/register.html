@@ -1,26 +1,572 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>User Registration</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodBridge Register</title>
+
+
+    <style>
+
+
+        body{
+
+            margin:0;
+            font-family:'Poppins',sans-serif;
+            background:#07140d;
+            color:white;
+
+        }
+
+
+
+        /* Loader */
+
+
+        #loader{
+
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:#07140d;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            z-index:99999;
+            transition:.6s;
+
+        }
+
+
+        .loader-content{
+
+            text-align:center;
+
+        }
+
+
+        .loader-content h1{
+
+            font-size:48px;
+            color:#7CFF7C;
+
+        }
+
+
+        .progress{
+
+            width:300px;
+            height:10px;
+            background:#222;
+            border-radius:20px;
+            overflow:hidden;
+            margin:20px auto;
+
+        }
+
+
+        .progress-bar{
+
+            height:100%;
+            width:100%;
+            background:linear-gradient(90deg,#7CFF7C,#00ff88);
+            transform:translateX(-100%);
+            animation:loading 3s forwards;
+
+        }
+
+
+
+        @keyframes loading{
+
+            from{
+
+                transform:translateX(-100%);
+
+            }
+
+            to{
+
+                transform:translateX(0);
+
+            }
+
+        }
+
+
+
+
+
+        /* Navbar */
+
+
+        nav{
+
+            display:flex;
+            align-items:center;
+            padding:18px 8%;
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(15px);
+
+        }
+
+
+        .logo{
+
+            display:flex;
+            align-items:center;
+            gap:12px;
+
+        }
+
+
+        .logo img{
+
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            background:white;
+            padding:5px;
+
+        }
+
+
+        .logo h2{
+
+            color:#7CFF7C;
+
+        }
+
+
+
+
+
+        /* Register Box */
+
+
+        .container{
+
+            width:420px;
+            margin:50px auto;
+
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(15px);
+
+            padding:35px;
+
+            border-radius:25px;
+
+            box-shadow:0 0 25px rgba(124,255,124,.2);
+
+        }
+
+
+
+        .container h1{
+
+            text-align:center;
+            color:#7CFF7C;
+            font-size:38px;
+
+        }
+
+
+
+        .container p{
+
+            text-align:center;
+            color:#ddd;
+
+        }
+
+
+
+
+        label{
+
+            display:block;
+            margin-top:18px;
+            margin-bottom:8px;
+            font-weight:bold;
+
+        }
+
+
+
+
+        input,select{
+
+            width:100%;
+            padding:14px;
+
+            border:none;
+
+            border-radius:12px;
+
+            background:#f5f5f5;
+
+            box-sizing:border-box;
+
+            font-size:15px;
+
+        }
+
+
+
+
+        button{
+
+
+            width:100%;
+
+            padding:15px;
+
+            margin-top:25px;
+
+            background:#7CFF7C;
+
+            color:#07140d;
+
+            font-weight:bold;
+
+            font-size:16px;
+
+            border:none;
+
+            border-radius:15px;
+
+            cursor:pointer;
+
+            transition:.3s;
+
+
+        }
+
+
+
+        button:hover{
+
+            background:#00ff88;
+
+            transform:scale(1.03);
+
+        }
+
+
+
+
+
+        a{
+
+            color:#7CFF7C;
+
+            text-decoration:none;
+
+            font-weight:bold;
+
+        }
+
+
+
+
+        /* Footer */
+
+
+        .footer{
+
+            margin-top:50px;
+
+            background:#061108;
+
+            padding:25px;
+
+            text-align:center;
+
+        }
+
+
+        .footer h2{
+
+            color:#7CFF7C;
+
+        }
+
+
+
+
+        /* Responsive */
+
+
+        @media(max-width:600px){
+
+
+            .container{
+
+                width:80%;
+
+            }
+
+
+        }
+
+
+    </style>
+
 </head>
+
+
+
 <body>
 
-<h1>User Registration</h1>
 
-<form action="/register" method="post">
 
-    <label>Name:</label><br>
-    <input type="text" name="name" required><br><br>
+<!-- Loader -->
 
-    <label>Email:</label><br>
-    <input type="email" name="email" required><br><br>
 
-    <label>Password:</label><br>
-    <input type="password" name="password" required><br><br>
+<div id="loader">
 
-    <button type="submit">Register</button>
 
-</form>
+    <div class="loader-content">
+
+
+        <h1>🍱 FoodBridge</h1>
+
+
+        <p>Connecting Food with People</p>
+
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+
+        <p>Loading Registration...</p>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- Navbar -->
+
+
+<nav>
+
+
+    <div class="logo">
+
+
+        <img src="/images/foodbridge-logo.png">
+
+
+        <h2>FoodBridge</h2>
+
+
+    </div>
+
+
+</nav>
+
+
+
+
+
+<!-- Registration Form -->
+
+
+<div class="container">
+
+
+    <h1>📝 Register</h1>
+
+
+    <p>Create your FoodBridge account</p>
+
+
+
+
+    <form action="/register" method="post">
+
+
+
+        <label>Full Name</label>
+
+
+        <input
+
+                type="text"
+
+                name="name"
+
+                placeholder="Enter Full Name"
+
+                required>
+
+
+
+
+        <label>Email</label>
+
+
+        <input
+
+                type="email"
+
+                name="email"
+
+                placeholder="Enter Email"
+
+                required>
+
+
+
+
+        <label>Password</label>
+
+
+        <input
+
+                type="password"
+
+                name="password"
+
+                placeholder="Enter Password"
+
+                required>
+
+
+
+
+
+        <label>Select Role</label>
+
+
+        <select name="role" required>
+
+
+            <option value="">Choose Role</option>
+
+            <option value="Admin">Admin</option>
+
+            <option value="Donor">Donor</option>
+
+            <option value="NGO">NGO</option>
+
+            <option value="Volunteer">Volunteer</option>
+
+
+        </select>
+
+
+
+
+
+        <button type="submit">
+
+            Create Account 🚀
+
+        </button>
+
+
+
+    </form>
+
+
+
+
+    <br>
+
+
+    <p>
+
+        Already have an account?
+
+        <a href="/login.html">
+
+            Login
+
+        </a>
+
+    </p>
+
+
+</div>
+
+
+
+
+
+
+<footer class="footer">
+
+
+    <h2>FoodBridge</h2>
+
+
+    <p>
+
+        Connecting Donors, NGOs and Volunteers to Reduce Food Waste.
+
+    </p>
+
+
+    <p>
+
+        © 2026 FoodBridge | Smart Food Donation & Distribution Management System
+
+    </p>
+
+
+</footer>
+
+
+
+
+
+<script>
+
+
+    window.onload=function(){
+
+
+        setTimeout(function(){
+
+
+            document.getElementById("loader").style.opacity="0";
+
+
+            setTimeout(function(){
+
+
+                document.getElementById("loader").style.display="none";
+
+
+            },500);
+
+
+        },2500);
+
+
+
+    };
+
+
+</script>
+
+
 
 </body>
+
 </html>

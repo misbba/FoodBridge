@@ -2,6 +2,9 @@ package com.foodbridge.foodbridge.controller;
 
 import com.foodbridge.foodbridge.entity.User;
 import com.foodbridge.foodbridge.repository.UserRepository;
+
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +25,10 @@ public class UserController {
     // Save Register Data
     @PostMapping("/register")
     public String registerUser(User user) {
+
         userRepository.save(user);
-        return "redirect:/dashboard";
+
+        return "redirect:/login.html";
     }
 
     // Open Login Page
@@ -32,15 +37,46 @@ public class UserController {
         return "login.html";
     }
 
-    // Login Submit
+    // Login Check
     @PostMapping("/login")
-    public String loginUser() {
-        return "dashboard.html";
+    public String loginUser(String email, String password, HttpSession session) {
+
+        System.out.println("Email: " + email);
+        System.out.println("Password: " + password);
+
+        User user = userRepository.findByEmailAndPassword(email, password);
+
+        System.out.println(user);
+
+        if (user != null) {
+
+            session.setAttribute("userName", user.getName());
+            session.setAttribute("userRole", user.getRole());
+
+            if (user.getRole().equalsIgnoreCase("Admin")) {
+                return "redirect:/dashboard";
+            }
+            else if (user.getRole().equalsIgnoreCase("Donor")) {
+                return "redirect:/donate-food.html";
+            }
+            else if (user.getRole().equalsIgnoreCase("NGO")) {
+                return "redirect:/request-food.html";
+            }
+            else if (user.getRole().equalsIgnoreCase("Volunteer")) {
+                return "redirect:/claim-food.html";
+            }
+        }
+
+        return "redirect:/login.html";
     }
 
-    // Logout Page
+    // Logout
     @GetMapping("/logout")
-    public String logout() {
-        return "logout.html";
+    public String logout(HttpSession session) {
+
+        session.invalidate();
+
+        return "redirect:/login.html";
     }
+
 }

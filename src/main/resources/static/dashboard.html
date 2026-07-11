@@ -1,75 +1,1128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>FoodBridge Dashboard</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
-            text-align: center;
-            margin: 0;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+        body{
+
+            background:#07140d;
+            color:white;
+            overflow-x:hidden;
+
+        }
+        /* Loader */
+        #loader {
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background: #07140d;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 99999;
+
+            transition: .6s;
+
+        }
+        .loader-content{
+
+            text-align:center;
+
+        }
+        .loader-content h1{
+
+            font-size:48px;
+            color:#7CFF7C;
+
+        }
+        .progress{
+            width:280px;
+            height:12px;
+            background:white;
+            border-radius:20px;
+            overflow:hidden;
+            margin:20px auto;
+        }
+        .progress-bar{
+            height:100%;
+            width:0%;
+            background:#7CFF7C;
+            animation:loading 3s forwards;
+        }
+        @keyframes loading{
+            from{
+                width:0%;
+            }
+
+            to{
+                width:100%;
+            } }
+        /* Navigation */
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:18px 8%;
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(15px);
+            position:sticky;
+            top:0;
+            z-index:999;
+        }
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:15px;
+        }  .logo img{
+            width:60px;
+            height:60px;
+
+            border-radius:50%;
+
+            background:white;
+
+            padding:5px;
+        }
+        .logo h2{
+
+            color:#7CFF7C;
+
+        }
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:30px;
+        }
+        nav ul li a{
+            text-decoration:none;
+            color:white;
+            font-weight:bold;
+        }
+        nav ul li a:hover{
+            color:#7CFF7C;
+        }
+        /* Hero Section */
+        .hero{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:80px 8%;
+        }
+        .hero-left{
+            width:55%;
+        }
+        .hero-left h1{
+            font-size:55px;
+            line-height:70px;
+
+        }
+        .hero-left span{
+            color:#7CFF7C;}
+        .hero-left p{
+            margin-top:25px;
+            font-size:20px;
+            line-height:35px;
+            color:#ddd;}
+        /* Dancing Logo Circle */
+
+
+        .hero-right{
+
+            width:45%;
+
+            display:flex;
+
+            justify-content:center;
+
         }
 
-        .header {
-            background-color: #2e7d32;
-            color: white;
-            padding: 20px;
+
+
+        .dashboard-circle{
+
+            width:330px;
+
+            height:330px;
+
+
+            border-radius:50%;
+
+
+            background:linear-gradient(135deg,#2e7d32,#6CFF75);
+
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+
+            box-shadow:
+
+                    0 0 60px rgba(108,255,117,.6);
+
+
+
+            animation:float 3s infinite ease-in-out;
+
         }
 
-        .menu {
-            background-color: white;
-            padding: 15px;
+
+
+        .dashboard-circle img{
+
+            width:220px;
+
         }
 
-        .menu a {
-            text-decoration: none;
-            margin: 10px;
-            color: #2e7d32;
-            font-weight: bold;
+
+
+        @keyframes float{
+
+
+            0%{
+
+                transform:translateY(0);
+
+            }
+
+
+            50%{
+
+                transform:translateY(-20px);
+
+            }
+
+
+            100%{
+
+                transform:translateY(0);
+
+            }
+
+
         }
 
-        .card {
-            background: white;
-            width: 300px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
+
+
+
+        /* Statistics */
+
+
+        .stats{
+
+            display:flex;
+
+            justify-content:center;
+
+            flex-wrap:wrap;
+
+            gap:25px;
+
+            padding:30px;
+
         }
 
-        .btn {
-            display: block;
-            background: #2e7d32;
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            margin: 10px;
-            border-radius: 5px;
+
+
+        .box{
+
+
+            width:230px;
+
+            padding:30px;
+
+
+            background:rgba(255,255,255,.08);
+
+
+            backdrop-filter:blur(15px);
+
+
+            border-radius:20px;
+
+
+            text-align:center;
+
+
         }
+
+
+
+        .box:hover{
+
+
+            transform:translateY(-10px);
+
+            box-shadow:0 0 25px #7CFF7C;
+
+
+        }
+
+
+        .number{
+
+
+            font-size:42px;
+
+            font-weight:bold;
+
+            color:#7CFF7C;
+
+
+        }
+
+
+        /* Dashboard cards */
+
+
+        .dashboard-grid{
+
+
+            display:grid;
+
+            grid-template-columns:1fr 1fr;
+
+            gap:30px;
+
+            padding:40px 8%;
+
+
+        }
+
+
+        .glass-card{
+
+
+            background:rgba(255,255,255,.08);
+
+
+            backdrop-filter:blur(15px);
+
+
+            padding:30px;
+
+
+            border-radius:25px;
+
+
+        }
+
+
+
+        .glass-card h2{
+
+
+            text-align:center;
+
+            color:#7CFF7C;
+
+            margin-bottom:25px;
+
+
+        }
+
+
+
+        .action-btn{
+
+
+            display:block;
+
+            text-decoration:none;
+
+            background:linear-gradient(135deg,#2e7d32,#43a047);
+
+            padding:16px;
+
+            margin:15px 0;
+
+            border-radius:12px;
+
+            text-align:center;
+
+            color:white;
+
+            font-weight:bold;
+
+
+        }
+
+
+        .action-btn:hover{
+
+
+            background:#7CFF7C;
+
+            color:black;
+
+
+        }
+
+
+
+        .section-title{
+
+
+            text-align:center;
+
+            font-size:42px;
+
+            color:#7CFF7C;
+
+            margin:40px;
+
+
+        }
+
+
+
+        .recent-grid{
+
+
+            display:grid;
+
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+            gap:25px;
+
+            padding:0 8% 60px;
+
+
+        }
+
+
+
+        .recent{
+
+
+            background:rgba(255,255,255,.08);
+
+            padding:20px;
+
+            border-radius:20px;
+
+            text-align:center;
+
+
+        }
+
+
+        .recent img{
+
+
+            width:100%;
+
+            height:220px;
+
+            object-fit:cover;
+
+            border-radius:15px;
+
+
+        }
+
+
+
+
+        .footer{
+
+
+            background:#10251b;
+
+            padding:40px;
+
+            text-align:center;
+
+
+        }
+        .footer h2{
+            color:#7CFF7C;
+        }
+        @media(max-width:900px){
+            .hero{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .hero-left{
+                width:100%;
+            }
+            .hero-right{
+                width:100%;
+                margin-top:40px;
+            }
+            .dashboard-circle{
+
+                width:280px;
+
+                height:280px;
+
+            }
+            .dashboard-circle img{
+
+                width:170px;
+
+            }
+            .dashboard-grid{
+                grid-template-columns:1fr;
+            }
+            nav{
+                flex-direction:column;
+            }
+            nav ul{
+                margin-top:15px;
+                flex-wrap:wrap;
+                justify-content:center;
+            }
+        }
+
     </style>
+
 </head>
 <body>
 
-<div class="header">
-    <h1>FoodBridge Dashboard</h1>
+
+<!-- Loader -->
+
+<div id="loader">
+
+    <div class="loader-content">
+
+        <h1>🍱 FoodBridge</h1>
+
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+
+        <p>Loading Dashboard...</p>
+
+
+    </div>
+
 </div>
 
-<div class="menu">
-    <a href="/dashboard.html">Dashboard</a>
-    <a href="/view-donations.html">Donations</a>
-    <a href="/view-requests.html">Requests</a>
-    <a href="/view-claims.html">Claims</a>
-    <a href="/logout.html">Logout</a>
+
+
+
+<!-- Navigation -->
+
+
+<nav>
+
+
+    <div class="logo">
+
+
+        <img src="/images/foodbridge-logo.png">
+
+
+        <h2>FoodBridge</h2>
+
+
+    </div>
+
+
+
+    <ul>
+
+
+        <li><a href="/dashboard">Dashboard</a></li>
+
+        <li><a href="/view-donations.html">Donations</a></li>
+
+        <li><a href="/view-requests.html">Requests</a></li>
+
+        <li><a href="/view-claims.html">Claims</a></li>
+
+        <li><a href="/about.html">About</a></li>
+
+        <li><a href="/logout">Logout</a></li>
+
+
+    </ul>
+
+
+</nav>
+
+
+
+
+
+<!-- Hero -->
+
+
+<section class="hero">
+
+
+    <div class="hero-left">
+
+
+        <h1>
+
+            Welcome <span id="username">User</span>
+
+        </h1>
+
+
+        <p>
+
+            Monitor food donations, requests, claims and analytics from one smart dashboard.
+
+        </p>
+
+
+    </div>
+
+
+
+
+    <div class="hero-right">
+
+
+        <div class="dashboard-circle">
+
+
+            <img src="/images/foodbridge-logo.png">
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+
+
+<!-- Statistics -->
+
+
+<div class="stats">
+
+
+    <div class="box">
+
+        <h3>Total Donations</h3>
+
+        <div class="number" id="donations">0</div>
+
+    </div>
+
+
+
+    <div class="box">
+
+        <h3>Available Foods</h3>
+
+        <div class="number" id="available">0</div>
+
+    </div>
+
+
+
+
+    <div class="box">
+
+        <h3>Total Requests</h3>
+
+        <div class="number" id="requests">0</div>
+
+    </div>
+
+
+
+
+    <div class="box">
+
+        <h3>Claimed Foods</h3>
+
+        <div class="number" id="claimed">0</div>
+
+    </div>
+
+
 </div>
 
-<div class="card">
-    <h2>Food Management System</h2>
 
-    <a class="btn" href="/donate-food.html">Donate Food</a>
 
-    <a class="btn" href="/request-food.html">Request Food</a>
 
-    <a class="btn" href="/claim-food.html">Claim Food</a>
+
+
+<!-- Dashboard Actions -->
+
+
+<section class="dashboard-grid">
+
+
+
+    <div class="glass-card">
+
+
+        <h2>⚡ Quick Actions</h2>
+
+
+        <a class="action-btn" href="/donate-food.html">
+
+            🍱 Donate Food
+
+        </a>
+
+
+
+        <a class="action-btn" href="/request-food.html">
+
+            🥣 Request Food
+
+        </a>
+
+
+
+        <a class="action-btn" href="/claim-food.html">
+
+            🤝 Claim Food
+
+        </a>
+
+
+
+        <a class="action-btn" href="/downloadReport">
+
+            📄 Download PDF Report
+
+        </a>
+
+
+    </div>
+
+
+
+
+
+    <div class="glass-card">
+
+
+        <h2>📊 FoodBridge Analytics</h2>
+
+
+        <canvas id="foodChart"></canvas>
+
+
+    </div>
+
+
+
+
+</section>
+
+
+
+
+
+
+
+<h1 class="section-title">
+
+    🕒 Recent Donations
+
+</h1>
+
+
+
+<div class="recent-grid" id="recentDonations">
+
+
 </div>
 
+
+
+
+
+
+
+
+<footer class="footer">
+
+
+    <h2>FoodBridge</h2>
+
+
+    <p>
+
+        Connecting Donors, NGOs and Volunteers to Reduce Food Waste.
+
+    </p>
+
+
+    <br>
+
+
+    <p>
+
+        Smart Food Donation & Distribution Management System
+
+    </p>
+
+
+    <br>
+
+
+    <p>
+
+        © 2026 FoodBridge | All Rights Reserved
+
+    </p>
+
+
+
+</footer>
+
+
+
+
+
+
+<script>
+
+
+    // Loader
+
+
+    window.onload=function(){
+
+
+        setTimeout(function(){
+
+
+            document.getElementById("loader").style.opacity="0";
+
+
+            setTimeout(function(){
+
+
+                document.getElementById("loader").style.display="none";
+
+
+            },500);
+
+
+
+        },2500);
+
+
+
+    };
+
+
+
+
+
+    // Username
+
+
+    fetch("/username")
+
+        .then(response=>response.text())
+
+        .then(data=>{
+
+
+            document.getElementById("username").innerHTML=data;
+
+
+        });
+
+
+
+
+
+
+    // Counter Animation
+
+
+    function animateValue(id,end){
+
+
+        let start=0;
+
+        end=Number(end);
+
+
+        let counter=setInterval(function(){
+
+
+            start++;
+
+
+            if(start>=end){
+
+
+                start=end;
+
+                clearInterval(counter);
+
+
+            }
+
+
+
+            document.getElementById(id).innerHTML=start;
+
+
+
+        },20);
+
+
+
+    }
+
+
+
+
+
+
+
+    // Statistics
+
+
+
+    fetch("/totalDonations")
+
+        .then(r=>r.text())
+
+        .then(data=>{
+
+            animateValue("donations",data);
+
+        });
+
+
+
+
+
+    fetch("/availableFoods")
+
+        .then(r=>r.text())
+
+        .then(data=>{
+
+            animateValue("available",data);
+
+        });
+
+
+
+
+
+    fetch("/totalRequests")
+
+        .then(r=>r.text())
+
+        .then(data=>{
+
+            animateValue("requests",data);
+
+        });
+
+
+
+
+
+    fetch("/claimedFoods")
+
+        .then(r=>r.text())
+
+        .then(data=>{
+
+            animateValue("claimed",data);
+
+        });
+
+
+
+
+
+
+
+
+
+    // Recent Donations
+
+
+
+    fetch("/recentDonations")
+
+
+        .then(response=>response.json())
+
+
+        .then(data=>{
+
+
+            let output="";
+
+
+            data.forEach(food=>{
+
+
+                output+=`
+
+
+<div class="recent">
+
+
+<img src="/uploads/${food.imageName}">
+
+
+<h3>${food.foodName}</h3>
+
+
+<p>📍 ${food.location}</p>
+
+
+<p>📦 ${food.quantity}</p>
+
+
+<p>✅ ${food.status}</p>
+
+
+</div>
+
+
+`;
+
+
+
+            });
+
+
+            document.getElementById("recentDonations").innerHTML=output;
+
+
+
+        });
+
+
+
+
+
+
+
+
+
+    // Chart
+
+
+
+    Promise.all([
+
+
+        fetch("/totalDonations").then(r=>r.text()),
+
+
+        fetch("/availableFoods").then(r=>r.text()),
+
+
+        fetch("/totalRequests").then(r=>r.text()),
+
+
+        fetch("/claimedFoods").then(r=>r.text())
+
+
+    ])
+
+        .then(data=>{
+
+
+            new Chart(document.getElementById("foodChart"),{
+
+
+                type:"doughnut",
+
+
+                data:{
+
+
+                    labels:[
+
+                        "Donations",
+
+                        "Available",
+
+                        "Requests",
+
+                        "Claimed"
+
+                    ],
+
+
+                    datasets:[{
+
+
+                        data:[
+
+                            Number(data[0]),
+
+                            Number(data[1]),
+
+                            Number(data[2]),
+
+                            Number(data[3])
+
+                        ],
+                        backgroundColor:[
+
+                            "#4CAF50",
+
+                            "#2196F3",
+
+                            "#FFC107",
+
+                            "#F44336"
+
+                        ]
+
+                    }]},
+
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {labels: {
+                                color: "white"
+                            }}}}
+            });});
+
+</script>
 </body>
 </html>

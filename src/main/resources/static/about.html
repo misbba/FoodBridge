@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About FoodBridge</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+
+        body{
+
+            background:#07140d;
+            color:white;
+
+        }
+
+
+        /* Navbar */
+
+
+        nav{
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:18px 8%;
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(15px);
+
+        }
+
+
+        .logo{
+
+            display:flex;
+            align-items:center;
+            gap:12px;
+
+        }
+
+
+        .logo img{
+
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            background:white;
+            padding:5px;
+
+        }
+
+
+        .logo h2{
+
+            color:#7CFF7C;
+
+        }
+
+
+        nav a{
+
+            color:white;
+            text-decoration:none;
+            font-weight:bold;
+
+        }
+
+
+        nav a:hover{
+
+            color:#7CFF7C;
+
+        }
+
+
+
+        /* Hero */
+
+
+        .hero{
+
+            text-align:center;
+            padding:70px 20px;
+
+        }
+
+
+        .hero h1{
+
+            font-size:50px;
+            color:#7CFF7C;
+
+        }
+
+
+        .hero p{
+
+            font-size:20px;
+            color:#ddd;
+            margin-top:15px;
+
+        }
+
+
+
+
+
+        /* Cards */
+
+
+        .container{
+
+            width:85%;
+            margin:auto;
+
+        }
+
+
+        .card{
+
+            background:rgba(255,255,255,.08);
+            backdrop-filter:blur(15px);
+
+            padding:30px;
+
+            margin:30px 0;
+
+            border-radius:25px;
+
+            box-shadow:0 0 25px rgba(124,255,124,.2);
+
+            transition:.3s;
+
+        }
+
+
+        .card:hover{
+
+            transform:translateY(-8px);
+
+        }
+
+
+
+        .card h2{
+
+            color:#7CFF7C;
+            margin-bottom:15px;
+
+        }
+
+
+        .card p{
+
+            line-height:30px;
+            color:#ddd;
+
+        }
+
+
+        .card li{
+
+            margin:12px 0;
+            color:#ddd;
+
+        }
+
+
+
+
+        /* Developer */
+
+
+        .developer{
+
+            text-align:center;
+
+        }
+
+
+
+        .developer h2{
+
+            font-size:30px;
+
+        }
+
+
+
+
+        /* Footer */
+
+
+        footer{
+
+            background:#041008;
+            text-align:center;
+            padding:40px;
+
+        }
+
+
+        footer h2{
+
+            color:#7CFF7C;
+
+        }
+
+
+        footer p{
+
+            color:#ccc;
+            margin-top:10px;
+
+        }
+
+
+
+
+        @media(max-width:700px){
+
+            .hero h1{
+
+                font-size:35px;
+
+            }
+
+            .container{
+
+                width:90%;
+
+            }
+
+        }
+
+
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- Navbar -->
+
+
+<nav>
+
+
+    <div class="logo">
+
+        <img src="/images/foodbridge-logo.png">
+
+        <h2>FoodBridge</h2>
+
+    </div>
+
+
+    <a href="/index.html">
+
+        Home
+
+    </a>
+
+
+</nav>
+
+
+
+
+
+<!-- Hero -->
+
+
+<section class="hero">
+
+
+    <h1>🍱 About FoodBridge</h1>
+
+
+    <p>
+
+        Smart Food Donation & Distribution Management System
+
+    </p>
+
+
+</section>
+
+
+
+
+
+
+<div class="container">
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>🌟 What is FoodBridge?</h2>
+
+
+        <p>
+
+            FoodBridge is a smart food donation platform designed to connect food donors, NGOs, volunteers and people in need through a single digital platform.
+
+            It helps reduce food wastage by allowing surplus food to be shared efficiently with those who need it.
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>🎯 Our Mission</h2>
+
+
+        <ul>
+
+            <li>🍽️ Reduce unnecessary food waste.</li>
+
+            <li>❤️ Support communities facing food shortages.</li>
+
+            <li>🤝 Connect donors and receivers easily.</li>
+
+            <li>🌍 Create a sustainable food-sharing ecosystem.</li>
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>⚙️ How FoodBridge Works</h2>
+
+
+        <ul>
+
+            <li>🍱 Donors upload available food details.</li>
+
+            <li>🔍 NGOs and receivers view available donations.</li>
+
+            <li>🤝 Eligible users claim the required food.</li>
+
+            <li>🚚 Food is distributed safely before expiry.</li>
+
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>✨ Key Features</h2>
+
+
+        <ul>
+
+            <li>🍱 Food Donation Management</li>
+
+            <li>📋 Food Request System</li>
+
+            <li>🤝 Food Claim Management</li>
+
+            <li>📍 Location-Based Food Sharing</li>
+
+            <li>📧 Email Notifications</li>
+
+            <li>📊 Dashboard Monitoring</li>
+
+            <li>🔒 Secure User Authentication</li>
+
+            <li>📱 User-Friendly Interface</li>
+
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>💡 Why FoodBridge?</h2>
+
+
+        <ul>
+
+            <li>✅ Simple and easy food sharing process.</li>
+
+            <li>♻️ Helps reduce food wastage.</li>
+
+            <li>❤️ Supports needy communities.</li>
+
+            <li>⚡ Provides faster food distribution.</li>
+
+            <li>🌱 Promotes social responsibility.</li>
+
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>💻 Technologies Used</h2>
+
+
+        <ul>
+
+            <li>☕ Java</li>
+
+            <li>🌱 Spring Boot</li>
+
+            <li>🗄️ MySQL Database</li>
+
+            <li>🌐 HTML5</li>
+
+            <li>🎨 CSS3</li>
+
+            <li>⚡ JavaScript</li>
+
+        </ul>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="card developer">
+
+
+        <h2>👨‍💻 Developed By</h2>
+
+
+        <p>
+
+            <b>Misbbahoonnishaa A</b>
+
+        </p>
+
+
+        <p>
+
+            🎓 B.Tech Artificial Intelligence & Data Science
+
+        </p>
+
+
+        <p>
+
+            📚 Academic Project - FoodBridge
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>📞 Contact</h2>
+
+
+        <p>
+
+            📧 Email: nishamisbba@gmail.com
+
+        </p>
+
+
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<footer>
+
+
+    <h2>🍱 FoodBridge</h2>
+
+
+    <p>
+
+        "Reducing Food Waste • Feeding Lives"
+
+    </p>
+
+
+    <p>
+
+        © 2026 FoodBridge | Smart Food Donation & Distribution Management System
+
+    </p>
+
+
+</footer>
+
+
+
+
+</body>
+
+</html>

@@ -15,6 +15,10 @@ public class Food {
     private String foodName;
     private String quantity;
     private String location;
+    private String expiryDate;
+    private String status;
+    private String imageName;
+    private String claimerName;
 
     public Long getId() {
         return id;
@@ -47,4 +51,35 @@ public class Food {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public String getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+    public String getClaimerName() {
+        return claimerName;
+    }
+
+    public void setClaimerName(String claimerName) {
+        this.claimerName = claimerName;
+    }
+
 }

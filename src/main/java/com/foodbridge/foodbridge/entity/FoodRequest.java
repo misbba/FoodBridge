@@ -15,6 +15,7 @@ public class FoodRequest {
     private String requesterName;
     private String foodNeeded;
     private String location;
+    private String quantity;
 
     public Long getId() {
         return id;
@@ -42,5 +43,12 @@ public class FoodRequest {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 }

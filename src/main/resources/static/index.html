@@ -1,21 +1,791 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>FoodBridge</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#07140d;
+            color:white;
+            overflow-x:hidden;
+        }
+
+        /* Navigation */
+
+        nav{
+            width:100%;
+            padding:18px 8%;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:fixed;
+            top:0;
+            left:0;
+            background:rgba(0,0,0,.35);
+            backdrop-filter:blur(12px);
+            z-index:999;
+        }
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:12px;
+        }
+
+        .logo img{
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            background:white;
+            padding:6px;
+        }
+
+        .logo h2{
+            font-size:30px;
+            color:#6CFF75;
+        }
+
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:35px;
+        }
+
+        nav ul li a{
+            text-decoration:none;
+            color:white;
+            font-weight:500;
+            transition:.3s;
+        }
+
+        nav ul li a:hover{
+            color:#7CFF89;
+        }
+
+        .buttons a{
+            text-decoration:none;
+            padding:12px 26px;
+            border-radius:30px;
+            margin-left:10px;
+            font-weight:bold;
+        }
+
+        .login{
+            background:transparent;
+            border:2px solid #6CFF75;
+            color:white;
+        }
+
+        .register{
+            background:#6CFF75;
+            color:black;
+        }
+
+        /* Hero */
+
+        .hero{
+            width:100%;
+            min-height:100vh;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:130px 8%;
+        }
+
+        .left{
+            width:50%;
+        }
+
+        .left h1{
+            font-size:65px;
+            line-height:80px;
+            margin-bottom:20px;
+        }
+
+        .left h1 span{
+            color:#6CFF75;
+        }
+
+        .left p{
+            font-size:18px;
+            line-height:32px;
+            color:#d6d6d6;
+            margin-bottom:40px;
+        }
+
+        .hero-btn{
+            display:inline-block;
+            padding:18px 40px;
+            background:#6CFF75;
+            border-radius:40px;
+            text-decoration:none;
+            color:black;
+            font-weight:bold;
+            font-size:18px;
+            box-shadow:0 0 25px #6CFF75;
+            transition:.3s;
+        }
+
+        .hero-btn:hover{
+            transform:translateY(-6px);
+        }
+
+        .right{
+            width:45%;
+            display:flex;
+            justify-content:center;
+        }
+
+        .circle{
+
+            width:430px;
+            height:430px;
+            border-radius:50%;
+            background:linear-gradient(135deg,#2e7d32,#6CFF75);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            box-shadow:0 0 60px rgba(108,255,117,.6);
+
+            animation:float 3s infinite ease-in-out;
+
+        }
+
+        .circle img{
+
+            width:280px;
+
+        }
+
+        @keyframes float{
+
+            0%{transform:translateY(0px);}
+            50%{transform:translateY(-18px);}
+            100%{transform:translateY(0px);}
+
+        }
+
+        section{
+
+            padding:90px 8%;
+
+        }
+
+        .title{
+
+            text-align:center;
+            font-size:42px;
+            margin-bottom:60px;
+            color:#6CFF75;
+
+        }
+        .cards{
+
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:30px;
+
+        }
+
+        .card{
+
+            width:300px;
+            background:rgba(255,255,255,.06);
+            backdrop-filter:blur(12px);
+            padding:30px;
+            border-radius:20px;
+            text-align:center;
+            transition:.4s;
+            border:1px solid rgba(255,255,255,.08);
+
+        }
+
+        .card:hover{
+
+            transform:translateY(-12px);
+            box-shadow:0 0 25px rgba(108,255,117,.4);
+
+        }
+
+        .card h1{
+
+            font-size:55px;
+            margin-bottom:15px;
+
+        }
+
+        .card h3{
+
+            margin-bottom:15px;
+            color:#6CFF75;
+
+        }
+
+        .card p{
+
+            line-height:28px;
+            color:#d7d7d7;
+
+        }
+
+        .stats{
+
+            display:flex;
+            justify-content:center;
+            gap:30px;
+            flex-wrap:wrap;
+
+        }
+
+        .box{
+
+            width:220px;
+            padding:40px;
+            background:linear-gradient(135deg,#1d4227,#2e7d32);
+            border-radius:20px;
+            text-align:center;
+            box-shadow:0 0 25px rgba(108,255,117,.3);
+
+        }
+
+        .box h1{
+
+            font-size:45px;
+            color:#6CFF75;
+
+        }
+
+        .box p{
+
+            margin-top:10px;
+
+        }
+        .cta{
+
+            text-align:center;
+            padding:100px 8%;
+            background:linear-gradient(135deg,#1b5e20,#43a047);
+
+        }
+
+        .cta h2{
+
+            font-size:48px;
+            margin-bottom:20px;
+
+        }
+
+        .cta p{
+
+            font-size:20px;
+            margin-bottom:35px;
+            color:#eeeeee;
+
+        }
+
+        footer{
+
+            background:#041008;
+            text-align:center;
+            padding:50px 20px;
+
+        }
+
+        footer h2{
+
+            color:#6CFF75;
+            font-size:34px;
+
+        }
+
+        footer p{
+
+            color:#cccccc;
+            line-height:28px;
+
+        }
+
+        @media(max-width:900px){
+
+            .hero{
+
+                flex-direction:column;
+                text-align:center;
+
+            }
+
+            .left{
+
+                width:100%;
+
+            }
+
+            .right{
+
+                width:100%;
+                margin-top:40px;
+
+            }
+
+            .left h1{
+
+                font-size:45px;
+                line-height:60px;
+
+            }
+
+            .circle{
+
+                width:280px;
+                height:280px;
+
+            }
+
+            .circle img{
+
+                width:170px;
+
+            }
+
+            nav{
+
+                flex-direction:column;
+                gap:15px;
+
+            }
+
+            nav ul{
+
+                flex-wrap:wrap;
+                justify-content:center;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<h1>Welcome to FoodBridge</h1>
+<nav>
 
-<h2>Smart Food Donation & Distribution System</h2>
+    <div class="logo">
 
-<ul>
-    <li><a href="/register">User Registration</a></li>
-    <li><a href="/login">User Login</a></li>
-    <li><a href="/donate">Donate Food</a></li>
-    <li><a href="/request">Request Food</a></li>
-    <li><a href="/claim">Claim Food</a></li>
-</ul>
+        <img src="/images/foodbridge-logo.png">
+
+        <h2>FoodBridge</h2>
+
+    </div>
+
+    <ul>
+
+        <li><a href="#">Home</a></li>
+
+        <li><a href="#about">About</a></li>
+
+        <li><a href="#features">Features</a></li>
+
+        <li><a href="#contact">Contact</a></li>
+
+    </ul>
+
+    <div class="buttons">
+
+        <a href="/login.html" class="login">Login</a>
+
+        <a href="/register.html" class="register">Register</a>
+
+    </div>
+
+</nav>
+
+<div class="hero">
+
+    <div class="left">
+
+        <h1>
+
+            Connecting
+            <span>Food</span><br>
+
+            With People.
+
+        </h1>
+
+        <p>
+
+            FoodBridge is a Smart Food Donation and Distribution platform that connects food donors, NGOs, volunteers and beneficiaries to reduce food waste and fight hunger.
+
+        </p>
+
+        <a href="/register.html" class="hero-btn">
+
+            Get Started →
+
+        </a>
+
+    </div>
+
+    <div class="right">
+
+        <div class="circle">
+
+            <img src="/images/foodbridge-logo.png">
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2 class="title">About FoodBridge</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>🌱 Our Vision</h3>
+
+            <p>
+
+                To build a world where no edible food is wasted while millions suffer from hunger.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>🎯 Our Mission</h3>
+
+            <p>
+
+                Connecting food donors, NGOs and volunteers through one smart platform.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>❤️ Our Goal</h3>
+
+            <p>
+
+                Reduce food waste and ensure surplus food reaches the needy safely.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="features">
+
+    <h2 class="title">Our Features</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h1>🍱</h1>
+
+            <h3>Donate Food</h3>
+
+            <p>
+
+                Donate surplus food quickly through FoodBridge.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>🥣</h1>
+
+            <h3>Request Food</h3>
+
+            <p>
+
+                People and NGOs can request food easily.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>🤝</h1>
+
+            <h3>Claim Food</h3>
+
+            <p>
+
+                Claim available food before expiry.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>📧</h1>
+
+            <h3>Email Alerts</h3>
+
+            <p>
+
+                Receive instant email notifications after donations and claims.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>📍</h1>
+
+            <h3>GPS Location</h3>
+
+            <p>
+
+                Locate nearby donors and NGOs using live location.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>📊</h1>
+
+            <h3>Dashboard</h3>
+
+            <p>
+
+                Monitor donations, requests and claims in one place.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STATISTICS -->
+
+<section>
+
+    <h2 class="title">Our Impact</h2>
+
+    <div class="stats">
+
+        <div class="box">
+
+            <h1>500+</h1>
+
+            <p>Food Donations</p>
+
+        </div>
+
+        <div class="box">
+
+            <h1>250+</h1>
+
+            <p>Food Claims</p>
+
+        </div>
+
+        <div class="box">
+
+            <h1>100+</h1>
+
+            <p>NGOs Connected</p>
+
+        </div>
+
+        <div class="box">
+
+            <h1>5000+</h1>
+
+            <p>Meals Shared</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HOW IT WORKS -->
+
+<section>
+
+    <h2 class="title">How FoodBridge Works</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h1>1️⃣</h1>
+
+            <h3>Donate</h3>
+
+            <p>
+
+                Donors upload food details with quantity, expiry and location.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>2️⃣</h1>
+
+            <h3>Match</h3>
+
+            <p>
+
+                FoodBridge finds nearby NGOs and beneficiaries.
+
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>3️⃣</h1>
+
+            <h3>Deliver</h3>
+
+            <p>
+
+                Food reaches people safely before expiry.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- CALL TO ACTION -->
+
+<section class="cta">
+
+    <h2>Ready to Make a Difference?</h2>
+
+    <p>
+
+        Join FoodBridge today and help us reduce food waste and feed people in need.
+
+    </p>
+
+    <a href="/register.html" class="hero-btn">
+
+        Join FoodBridge
+
+    </a>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <h2 class="title">Contact Us</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h1>📧</h1>
+
+            <h3>Email</h3>
+
+            <p>nishamisbba@gmail.com</p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>📍</h1>
+
+            <h3>Location</h3>
+
+            <p>Dindigul, Tamil Nadu, India</p>
+
+        </div>
+
+        <div class="card">
+
+            <h1>📞</h1>
+
+            <h3>Support</h3>
+
+            <p>Available 24 × 7</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <h2>🍱 FoodBridge</h2>
+
+    <p>
+
+        Smart Food Donation & Distribution Management System
+
+    </p>
+
+    <br>
+
+    <p>
+
+        "Reducing Food Waste • Feeding Lives"
+
+    </p>
+
+    <br>
+
+    <p>
+
+        © 2026 FoodBridge | Developed by Team FoodBridge
+
+    </p>
+
+</footer>
 
 </body>
+
 </html>
