@@ -532,10 +532,7 @@
 
 
 <!-- Navigation -->
-
-
 <nav>
-
 
     <div class="logo">
 
@@ -603,6 +600,7 @@
 
 
 
+
     <div class="hero-right">
 
 
@@ -620,6 +618,26 @@
 
 
 </section>
+
+<!-- Expired Food Warning -->
+
+<div id="expiredBanner"
+     style="display:none;
+     margin:0 8% 25px;
+     background:#d32f2f;
+     color:white;
+     text-align:center;
+     padding:15px;
+     border-radius:12px;
+     font-size:18px;
+     font-weight:bold;
+     box-shadow:0 0 15px rgba(255,0,0,.4);">
+
+    ⚠ Warning! <span id="expiredCount">0</span> food item(s) have expired. Please remove or update them.
+
+</div>
+
+<!-- Statistics -->
 
 
 
@@ -669,6 +687,8 @@
         <h3>Claimed Foods</h3>
 
         <div class="number" id="claimed">0</div>
+
+
 
     </div>
 
@@ -843,6 +863,18 @@
 
 
     };
+    fetch("/expiredFoods")
+        .then(response => response.json())
+        .then(data => {
+
+            if(data.length > 0){
+
+                document.getElementById("expiredBanner").style.display = "block";
+                document.getElementById("expiredCount").innerHTML = data.length;
+
+            }
+
+        });
 
 
 
@@ -968,6 +1000,7 @@
             animateValue("claimed",data);
 
         });
+
 
 
 

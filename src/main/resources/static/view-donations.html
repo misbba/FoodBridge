@@ -375,7 +375,8 @@
         ${food.id},
         '${food.foodName}',
         '${food.quantity}',
-        '${food.location}')">
+        '${food.location}',
+        '${food.expiryDate}')">
 
         ✏ Edit Donation
 
@@ -446,31 +447,34 @@
 
     }
 
-        function editDonation(id, foodName, quantity, location){
+        function editDonation(id, foodName, quantity, location, expiryDate){
 
-        let newFood = prompt("Food Name", foodName);
-        if(newFood == null) return;
+            let newFood = prompt("Food Name", foodName);
+            if(newFood == null) return;
 
-        let newQuantity = prompt("Quantity", quantity);
-        if(newQuantity == null) return;
+            let newQuantity = prompt("Quantity", quantity);
+            if(newQuantity == null) return;
 
-        let newLocation = prompt("Location", location);
-        if(newLocation == null) return;
+            let newLocation = prompt("Location", location);
+            if(newLocation == null) return;
 
-        fetch("/updateDonation?id=" + id +
-        "&foodName=" + encodeURIComponent(newFood) +
-        "&quantity=" + encodeURIComponent(newQuantity) +
-        "&location=" + encodeURIComponent(newLocation),
-    {
-        method:"POST"
-    })
-        .then(response => response.text())
-        .then(data=>{
-        alert(data);
-        location.reload();
-    });
+            let newExpiry = prompt("Expiry Date (YYYY-MM-DD)", expiryDate);
+            if(newExpiry == null) return;
 
-    }
+            fetch("/updateDonation?id=" + id +
+                "&foodName=" + encodeURIComponent(newFood) +
+                "&quantity=" + encodeURIComponent(newQuantity) +
+                "&location=" + encodeURIComponent(newLocation) +
+                "&expiryDate=" + encodeURIComponent(newExpiry),
+                {
+                    method:"POST"
+                })
+                .then(response => response.text())
+                .then(data=>{
+                    alert(data);
+                    location.reload();
+                });
+        }
         // Fade Animation
 
         document.body.style.opacity="0";

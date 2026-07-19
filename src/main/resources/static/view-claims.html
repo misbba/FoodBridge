@@ -199,14 +199,11 @@
 
         }
 
-
         .search button:hover{
 
             background:#00ff88;
 
         }
-
-
 
         /* Claims Cards */
 
@@ -217,7 +214,6 @@
             justify-content:center;
 
         }
-
 
         .card{
 
@@ -236,13 +232,11 @@
 
         }
 
-
         .card:hover{
 
             transform:translateY(-10px);
 
         }
-
 
         .card img{
 
@@ -250,9 +244,7 @@
             height:220px;
             object-fit:cover;
             border-radius:15px;
-
         }
-
 
         .card h3{
 
@@ -261,7 +253,6 @@
 
         }
 
-
         .card p{
 
             font-size:16px;
@@ -269,10 +260,7 @@
 
         }
 
-
-
         /* Footer */
-
         .footer{
 
             margin-top:50px;
@@ -281,65 +269,42 @@
             text-align:center;
 
         }
-
-
         .footer h2{
-
             color:#7CFF7C;
-
         }
-
-
 
         /* Responsive */
 
         @media(max-width:768px){
-
             nav{
-
                 flex-direction:column;
 
             }
-
 
             nav ul{
 
                 flex-direction:column;
                 text-align:center;
-
             }
-
-
             .hero h1{
 
                 font-size:35px;
-
             }
-
 
             .card{
-
                 width:85%;
-
             }
-
 
             .search input{
 
                 width:70%;
-
             }
-
         }
-
-
     </style>
 
 </head>
 
-
 <body>
-
 
 <!-- Loader -->
 
@@ -404,16 +369,12 @@
 
     </ul>
 
-
 </nav>
-
 
 
 <!-- Hero -->
 
-
 <section class="hero">
-
 
     <h1>🤝 Food Claims</h1>
 
@@ -424,69 +385,36 @@
 
     </p>
 
-
 </section>
 
-
-
-
 <!-- Search -->
-
 
 <div class="search">
 
     <input type="text" id="searchBox" placeholder="Search by Location">
 
     <button onclick="searchClaim()">Search</button>
-
-
 </div>
-
-
-
 
 <!-- Claims Display -->
 
-
 <div id="claims"></div>
-
-
-
 
 <!-- Footer -->
 
-
 <footer class="footer">
-
-
     <h2>FoodBridge</h2>
-
-
     <p>
-
         Connecting Donors, NGOs and Volunteers to Reduce Food Waste.
-
     </p>
-
-
     <p>
 
         © 2026 FoodBridge | Smart Food Donation & Distribution Management System
-
     </p>
-
-
 </footer>
 
-
-
-
 <script>
-
-
     let allClaims=[];
-
-
     // Fetch Claims
 
     fetch("/claims")
@@ -500,128 +428,55 @@
             displayClaims(data);
 
         });
-
-
-
-
     // Display Claims
-
-
     function displayClaims(data){
-
-
         let output="";
-
-
         data.forEach(function(food){
-
-
             output+=`
 
 <div class="card">
-
-
 <img src="/uploads/${food.imageName}">
-
-
 <h3>${food.foodName}</h3>
-
-
 <p>🆔 <b>ID:</b> ${food.id}</p>
-
-
 <p>👤 <b>Claimer:</b> ${food.claimerName}</p>
 
-
 <p>📍 <b>Location:</b> ${food.location}</p>
-
-
 <p>✅ <b>Status:</b> ${food.status}</p>
-
-
 
 </div>
 
-
 `;
-
-
         });
-
-
         document.getElementById("claims").innerHTML=output;
-
-
     }
-
-
-
 
     // Search
 
-
     function searchClaim(){
-
-
         let location=document
             .getElementById("searchBox")
             .value
             .toLowerCase();
-
-
-
         let filteredClaims=allClaims.filter(function(claim){
-
-
             return claim.location
                 .toLowerCase()
                 .includes(location);
-
-
         });
-
-
         displayClaims(filteredClaims);
-
-
     }
-
-
-
-
     // Loader
-
-
     window.onload=function(){
-
-
         setTimeout(function(){
-
-
             document.getElementById("loader").style.opacity="0";
-
-
             setTimeout(function(){
-
                 document.getElementById("loader").style.display="none";
-
-
             },500);
-
-
 
         },2500);
 
-
-
     };
 
-
-
 </script>
-
-
-
 </body>
 
 </html>

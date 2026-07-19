@@ -59,6 +59,16 @@
             transform:translateX(-100%);
             animation:loading 3s linear forwards;
         }
+        .footer{
+            background:#10251b;
+            padding:40px;
+            text-align:center;
+            margin-top:60px;
+        }
+
+        .footer h2{
+            color:#7CFF7C;
+        }
 
         @keyframes loading{
             from{
@@ -159,14 +169,22 @@
         button{
             width:100%;
             padding:15px;
-            margin-top:25px}
+            margin-top:25px;
+            border:none;
+            border-radius:12px;
+            background:#4CAF50;
+            color:white;
+            font-size:18px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#66BB6A;
+        }
     </style>
 
 </head>
-
-<body>
-
-
 <body>
 
 <!-- Loader -->
@@ -298,25 +316,7 @@
 </footer>
 <!-- Loader Script -->
 
-<script>
 
-    window.onload=function(){
-
-        setTimeout(function(){
-
-            document.getElementById("loader").style.opacity="0";
-
-            setTimeout(function(){
-
-                document.getElementById("loader").style.display="none";
-
-            },500);
-
-        },2500);
-
-    };
-
-</script>
 <script>
 
     // Loader
@@ -360,10 +360,5 @@
     });
 
 </script>
-
 </body>
-
-
-</body>
-
 </html>

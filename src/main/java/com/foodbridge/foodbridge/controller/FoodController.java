@@ -181,7 +181,10 @@ public class FoodController {
     public String updateDonation(@RequestParam Long id,
                                  @RequestParam String foodName,
                                  @RequestParam String quantity,
-                                 @RequestParam String location){
+                                 @RequestParam String location,
+                                 @RequestParam String expiryDate)
+
+    {
 
         Food food = foodRepository.findById(id).orElse(null);
 
@@ -190,6 +193,7 @@ public class FoodController {
             food.setFoodName(foodName);
             food.setQuantity(quantity);
             food.setLocation(location);
+            food.setExpiryDate(expiryDate);
 
             foodRepository.save(food);
 
