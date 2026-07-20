@@ -54,8 +54,9 @@ public class FoodController {
             @RequestParam("image") MultipartFile image) throws IOException {
 
         String imageName = image.getOriginalFilename();
+        String uploadDir = "src/main/resources/static/uploads";
 
-        String uploadDir = System.getProperty("user.dir") + File.separator + "uploads";
+
 
         File folder = new File(uploadDir);
 
