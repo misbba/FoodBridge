@@ -275,29 +275,60 @@
 
         /* Responsive */
 
-        @media(max-width:768px){
+        @media (max-width:768px){
+
             nav{
                 flex-direction:column;
+                padding:15px;
+            }
 
+            .logo{
+                margin-bottom:15px;
             }
 
             nav ul{
-
-                flex-direction:column;
+                display:grid;
+                grid-template-columns:repeat(2,1fr);
+                gap:15px;
+                width:100%;
                 text-align:center;
+                padding:0;
+                margin-top:10px;
             }
+
+            nav ul li{
+                list-style:none;
+            }
+
+            .hero{
+                padding:35px 20px;
+            }
+
             .hero h1{
-
-                font-size:35px;
+                font-size:40px;
             }
 
-            .card{
-                width:85%;
+            .hero p{
+                font-size:18px;
             }
 
             .search input{
+                width:90%;
+                margin-bottom:10px;
+            }
 
-                width:70%;
+            .search button{
+                margin-left:0;
+                width:150px;
+            }
+
+            .card{
+                width:92%;
+                margin:15px auto;
+            }
+
+            .card img{
+                height:200px;
             }
         }
     </style>
