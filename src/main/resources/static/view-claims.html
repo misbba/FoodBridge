@@ -278,26 +278,38 @@
         @media (max-width:768px){
 
             nav{
-                flex-direction:column;
-                padding:15px;
+                flex-direction:row;
+                justify-content:space-between;
+                align-items:center;
+                padding:12px;
             }
 
-            .logo{
-                margin-bottom:15px;
+            .logo img{
+                width:45px;
+                height:45px;
+            }
+
+            .logo h2{
+                font-size:20px;
             }
 
             nav ul{
-                display:grid;
-                grid-template-columns:repeat(2,1fr);
+                display:flex;
+                flex-wrap:nowrap;
                 gap:15px;
-                width:100%;
-                text-align:center;
+                overflow-x:auto;
+                white-space:nowrap;
                 padding:0;
-                margin-top:10px;
+                margin:0;
+                list-style:none;
             }
 
-            nav ul li{
-                list-style:none;
+            nav ul::-webkit-scrollbar{
+                display:none;
+            }
+
+            nav ul li a{
+                font-size:14px;
             }
 
             .hero{
@@ -325,10 +337,6 @@
             .card{
                 width:92%;
                 margin:15px auto;
-            }
-
-            .card img{
-                height:200px;
             }
         }
     </style>
