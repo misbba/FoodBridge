@@ -113,14 +113,24 @@
             display:flex;
             list-style:none;
             gap:30px;
+            margin:0;
+            padding:0;
         }
         nav ul li a{
+            display:block;
             text-decoration:none;
             color:white;
             font-weight:bold;
+            padding:10px 0;
         }
         nav ul li a:hover{
             color:#7CFF7C;
+        }
+        .menu-icon{
+            display:none;
+            font-size:32px;
+            color:white;
+            cursor:pointer;
         }
         /* Hero Section */
         .hero{
@@ -461,7 +471,41 @@
         .footer h2{
             color:#7CFF7C;
         }
-        @media (max-width:900px){
+        @media (max-width:768px){
+
+            .menu-icon{
+                display:block;
+            }
+
+            nav{
+                flex-wrap:wrap;
+                padding:12px 20px;
+            }
+
+            nav ul{
+                display:none;
+                width:100%;
+                flex-direction:column;
+                text-align:center;
+                background:#163222;
+                border-radius:15px;
+                margin-top:15px;
+                padding:15px 0;
+                gap:15px;
+            }
+
+            nav ul.show{
+                display:flex;
+            }
+
+            .logo img{
+                width:45px;
+                height:45px;
+            }
+
+            .logo h2{
+                font-size:22px;
+            }
 
             .hero{
                 flex-direction:column;
@@ -475,50 +519,23 @@
             }
 
             .hero-left h1{
-                font-size:42px;
-                line-height:50px;
+                font-size:34px;
+                line-height:45px;
             }
 
-            .hero-left span{
-                display:block;
-                font-size:32px;
-                word-break:break-word;
+            .hero-left p{
+                font-size:17px;
+                line-height:28px;
             }
 
             .dashboard-circle{
                 width:220px;
                 height:220px;
-                margin-top:30px;
+                margin-top:25px;
             }
 
             .dashboard-circle img{
                 width:140px;
-            }
-
-            .dashboard-grid{
-                grid-template-columns:1fr;
-            }
-
-            nav{
-                flex-direction:column;
-                padding:15px;
-            }
-
-            nav ul{
-                display:grid;
-                grid-template-columns:repeat(2,1fr);
-                gap:15px;
-                width:100%;
-                text-align:center;
-                margin-top:15px;
-            }
-
-            nav ul li{
-                list-style:none;
-            }
-
-            .logo{
-                margin-bottom:10px;
             }
 
             .stats{
@@ -527,9 +544,30 @@
             }
 
             .box{
-                width:90%;
+                width:92%;
             }
 
+            .dashboard-grid{
+                grid-template-columns:1fr;
+                padding:30px 20px;
+            }
+
+            .section-title{
+                font-size:30px;
+            }
+
+            .recent-grid{
+                grid-template-columns:1fr;
+                padding:20px;
+            }
+
+            .recent img{
+                height:200px;
+            }
+
+            .footer{
+                padding:30px 20px;
+            }
         }
 
     </style>
@@ -568,20 +606,15 @@
 <nav>
 
     <div class="logo">
-
-
         <img src="/images/foodbridge-logo.png">
-
-
         <h2>FoodBridge</h2>
-
-
     </div>
 
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
 
-
-    <ul>
-
+    <ul id="menu">
 
         <li><a href="/dashboard">Dashboard</a></li>
 
@@ -594,7 +627,6 @@
         <li><a href="/about.html">About</a></li>
 
         <li><a href="/logout">Logout</a></li>
-
 
     </ul>
 
@@ -1188,6 +1220,11 @@
                                 color: "white"
                             }}}}
             });});
+    function toggleMenu(){
+
+        document.getElementById("menu").classList.toggle("show");
+
+    }
 
 </script>
 </body>
