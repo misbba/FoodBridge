@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>View Claims - FoodBridge</title>
 
@@ -95,7 +94,6 @@
             display:flex;
             align-items:center;
             gap:12px;
-            flex-wrap:wrap;
         }
 
         .logo img{
@@ -113,11 +111,7 @@
         nav ul{
             display:flex;
             list-style:none;
-            gap:15px;
-            padding:0;
-            margin:0;
-            flex-wrap:wrap;
-            justify-content:center;
+            gap:25px;
         }
 
         nav ul li a{
@@ -126,41 +120,24 @@
             font-weight:bold;
         }
 
-
         nav ul li a:hover{
-
             color:#7CFF7C;
-
         }
-
-
-
-
-        /* Hero */
 
         .hero{
             text-align:center;
             padding:60px 20px;
         }
 
-
         .hero h1{
-
             font-size:50px;
             color:#7CFF7C;
-
         }
-
 
         .hero p{
-
-            font-size:20px;
             color:#ddd;
-
+            font-size:20px;
         }
-
-
-        /* Search */
 
         .search{
             display:flex;
@@ -191,15 +168,13 @@
             background:#7CFF7C;
             color:black;
         }
-        /* Claims Cards */
+
         #claims{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
             gap:30px;
             padding:40px 8%;
         }
-
-
 
         .card{
             background:rgba(255,255,255,.08);
@@ -211,9 +186,7 @@
         }
 
         .card:hover{
-
             transform:translateY(-10px);
-
         }
 
         .card img{
@@ -222,66 +195,22 @@
             object-fit:cover;
             border-radius:18px;
         }
-        .card h3{
 
-            color:#7CFF7C;
-            font-size:25px;
 
-        }
-
-        .card p{
-
-            font-size:16px;
-            color:#ddd;
-
-        }
-        .status{
-            background:#43a047;
-            color:white;
-            padding:4px 12px;
-            border-radius:20px;
-            font-size:14px;
-        }
-
-        /* Footer */
         .footer{
-
-            margin-top:50px;
-            background:#061108;
-            padding:30px;
+            background:#10251b;
             text-align:center;
-
+            padding:35px;
+            margin-top:60px;
+            color:white;
         }
+
         .footer h2{
             color:#7CFF7C;
         }
-        @media (max-width:768px){
 
-            nav{
-                flex-direction:column;
-                padding:15px;
-            }
-
-            .logo{
-                margin-bottom:15px;
-            }
-
-            nav ul{
-                width:100%;
-                justify-content:center;
-                flex-wrap:wrap;
-                gap:10px;
-            }
-
-            .search{
-                flex-direction:column;
-                align-items:center;
-            }
-
-            .search input,
-            .search button{
-                width:90%;
-            }
+        .footer p{
+            color:#ccc;
         }
 
 
