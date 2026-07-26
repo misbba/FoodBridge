@@ -98,6 +98,12 @@
         .logo h2{
             color:#7CFF7C;
         }
+        .menu-icon{
+            display:none;
+            font-size:32px;
+            color:white;
+            cursor:pointer;
+        }
 
         nav ul{
             display:flex;
@@ -223,17 +229,29 @@
         }
         @media (max-width:768px){
 
+            .menu-icon{
+                display:block;
+            }
+
             nav{
-                flex-direction:column;
-                gap:15px;
-                padding:15px;
+                flex-wrap:wrap;
+                padding:15px 20px;
             }
 
             nav ul{
-                flex-wrap:wrap;
-                justify-content:center;
+                display:none;
+                width:100%;
+                flex-direction:column;
+                text-align:center;
+                background:#163222;
+                border-radius:15px;
+                margin-top:15px;
+                padding:15px 0;
                 gap:15px;
-                padding:0;
+            }
+
+            nav ul.show{
+                display:flex;
             }
 
             .hero h1{
@@ -249,10 +267,7 @@
                 align-items:center;
             }
 
-            .search input{
-                width:90%;
-            }
-
+            .search input,
             .search button{
                 width:90%;
             }
@@ -301,9 +316,13 @@
 
         <h2>FoodBridge</h2>
 
+
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
     </div>
 
-    <ul>
+    <ul id="menu">
 
         <li><a href="/dashboard">Dashboard</a></li>
 
@@ -544,6 +563,9 @@
             },2500);
 
         };
+        function toggleMenu(){
+            document.getElementById("menu").classList.toggle("show");
+        }
 </script>
 <footer class="footer">
 
