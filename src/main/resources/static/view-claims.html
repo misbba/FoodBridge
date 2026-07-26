@@ -189,12 +189,7 @@
         }
         /* Claims Cards */
 
-        #claims{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-            gap:30px;
-            padding:40px 8%;
-        }
+
 
         .card{
             background:rgba(255,255,255,.08);
@@ -383,6 +378,7 @@
         data.forEach(function(food){
 
             output += `
+
 <div class="card">
 
     <img src="/uploads/${food.imageName}">
@@ -405,18 +401,20 @@
         padding:6px 14px;
         border-radius:20px;
         font-size:14px;">
+
         ${food.status}
+
         </span>
+
     </p>
 
 </div>
+
 `;
         });
 
         document.getElementById("claims").innerHTML = output;
     }
-
-
     // Search
 
     function searchClaim(){
