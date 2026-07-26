@@ -95,6 +95,7 @@
             display:flex;
             align-items:center;
             gap:12px;
+            flex-wrap:wrap;
         }
 
         .logo img{
@@ -112,7 +113,11 @@
         nav ul{
             display:flex;
             list-style:none;
-            gap:25px;
+            gap:15px;
+            padding:0;
+            margin:0;
+            flex-wrap:wrap;
+            justify-content:center;
         }
 
         nav ul li a{
@@ -130,13 +135,12 @@
 
 
 
+
         /* Hero */
 
         .hero{
-
             text-align:center;
-            padding:50px;
-
+            padding:60px 20px;
         }
 
 
@@ -188,6 +192,12 @@
             color:black;
         }
         /* Claims Cards */
+        #claims{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+            gap:30px;
+            padding:40px 8%;
+        }
 
 
 
@@ -208,9 +218,9 @@
 
         .card img{
             width:100%;
-            height:200px;
+            height:230px;
             object-fit:cover;
-            border-radius:15px;
+            border-radius:18px;
         }
         .card h3{
 
@@ -244,6 +254,34 @@
         }
         .footer h2{
             color:#7CFF7C;
+        }
+        @media (max-width:768px){
+
+            nav{
+                flex-direction:column;
+                padding:15px;
+            }
+
+            .logo{
+                margin-bottom:15px;
+            }
+
+            nav ul{
+                width:100%;
+                justify-content:center;
+                flex-wrap:wrap;
+                gap:10px;
+            }
+
+            .search{
+                flex-direction:column;
+                align-items:center;
+            }
+
+            .search input,
+            .search button{
+                width:90%;
+            }
         }
 
 
@@ -429,6 +467,14 @@
         });
         displayClaims(filteredClaims);
     }
+    // Fade Animation
+    document.body.style.opacity = "0";
+
+    setTimeout(function(){
+        document.body.style.transition = "1s";
+        document.body.style.opacity = "1";
+    },100);
+
     // Loader
     window.onload=function(){
         setTimeout(function(){
