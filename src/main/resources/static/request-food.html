@@ -5,6 +5,11 @@
     <title>Request Food - FoodBridge</title>
 
     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
         body{
             margin:0;
             font-family:'Poppins',sans-serif;
@@ -72,9 +77,11 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
-            padding:18px 8%;
-            background:rgba(255,255,255,.08);
-            backdrop-filter:blur(15px);
+            padding:12px 20px;
+            background:#12261a;
+            position:sticky;
+            top:0;
+            z-index:999;
         }
 
         .logo{
@@ -99,11 +106,18 @@
             display:flex;
             list-style:none;
             gap:25px;
+            margin:0;
+            padding:0;
+        }
+
+        nav ul li{
+            padding:12px 0;
         }
 
         nav ul li a{
-            text-decoration:none;
             color:white;
+            text-decoration:none;
+            font-size:18px;
             font-weight:bold;
         }
 
@@ -111,6 +125,12 @@
             color:#7CFF7C;
         }
 
+        .menu-icon{
+            display:none;
+            font-size:32px;
+            color:white;
+            cursor:pointer;
+        }
         .hero{
             text-align:center;
             padding:60px;
@@ -189,6 +209,63 @@
         .footer p{
             color:#ccc;
         }
+        @media (max-width:768px){
+
+            .menu-icon{
+                display:block;
+            }
+
+            nav{
+                flex-wrap:wrap;
+            }
+
+            nav ul{
+                display:none;
+                width:100%;
+                flex-direction:column;
+                text-align:center;
+                background:#163222;
+                border-radius:15px;
+                margin-top:15px;
+                padding:15px 0;
+                gap:15px;
+            }
+
+            nav ul.show{
+                display:flex;
+            }
+
+            .hero{
+                padding:30px 20px;
+            }
+
+            .hero h1{
+                font-size:34px;
+            }
+
+            .hero p{
+                font-size:17px;
+            }
+
+            .container{
+                width:92%;
+                max-width:500px;
+                padding:25px;
+            }
+
+            .logo img{
+                width:45px;
+                height:45px;
+            }
+
+            .logo h2{
+                font-size:22px;
+            }
+
+            .footer{
+                padding:30px 20px;
+            }
+        }
     </style>
 
 </head>
@@ -221,25 +298,21 @@
 <nav>
 
     <div class="logo">
-
         <img src="/images/foodbridge-logo.png">
-
         <h2>FoodBridge</h2>
-
     </div>
 
-    <ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul id="menu">
 
         <li><a href="/dashboard">Dashboard</a></li>
-
         <li><a href="/view-donations.html">Donations</a></li>
-
         <li><a href="/view-requests.html">Requests</a></li>
-
         <li><a href="/view-claims.html">Claims</a></li>
-
         <li><a href="/about.html">About</a></li>
-
         <li><a href="/logout">Logout</a></li>
 
     </ul>
@@ -363,6 +436,11 @@
         alert("🥣 Food request submitted successfully!");
 
     });
+    function toggleMenu(){
+
+        document.getElementById("menu").classList.toggle("show");
+
+    }
 
 </script>
 </body>

@@ -139,7 +139,8 @@
 
         .container{
 
-            width:420px;
+            max-width:420px;
+            width:90%;
             margin:50px auto;
 
             background:rgba(255,255,255,.08);
@@ -261,13 +262,34 @@
 
         /* Responsive */
 
-        @media(max-width:600px){
-
+        @media (max-width:600px){
 
             .container{
+                width:92%;
+                padding:25px;
+            }
 
-                width:80%;
+            .logo img{
+                width:45px;
+                height:45px;
+            }
 
+            .logo h2{
+                font-size:22px;
+            }
+
+            .container h1{
+                font-size:30px;
+            }
+
+            .container p{
+                font-size:15px;
+            }
+
+            input,
+            select,
+            button{
+                font-size:15px;
             }
         }
 

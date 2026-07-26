@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>View Donations</title>
 
@@ -220,6 +221,51 @@
         *{
             box-sizing:border-box;
         }
+        @media (max-width:768px){
+
+            nav{
+                flex-direction:column;
+                gap:15px;
+                padding:15px;
+            }
+
+            nav ul{
+                flex-wrap:wrap;
+                justify-content:center;
+                gap:15px;
+                padding:0;
+            }
+
+            .hero h1{
+                font-size:34px;
+            }
+
+            .hero p{
+                font-size:17px;
+            }
+
+            .search{
+                flex-direction:column;
+                align-items:center;
+            }
+
+            .search input{
+                width:90%;
+            }
+
+            .search button{
+                width:90%;
+            }
+
+            #donations{
+                grid-template-columns:1fr;
+                padding:20px;
+            }
+
+            .card img{
+                height:200px;
+            }
+        }
     </style>
 
 </head>
@@ -320,13 +366,21 @@
         allFoods = data;
         displayFoods(data);
     });
-
         function displayFoods(data){
 
-        let output = "";
+            if(data.length===0){
 
-        data.forEach(function(food){
-            output += `
+                document.getElementById("donations").innerHTML =
+                    "<h2 style='text-align:center;color:#7CFF7C;'>No food donations found.</h2>";
+
+                return;
+            }
+
+            let output = "";
+
+            data.forEach(function(food){
+
+                output += `
 
 <div class="card">
 
@@ -345,28 +399,21 @@
     <p><b>📅 Expiry :</b> ${food.expiryDate}</p>
 
     <p>
-
         <b>Status :</b>
-
         <span style="
         background:#2e7d32;
         color:white;
         padding:6px 14px;
         border-radius:20px;
         font-size:14px;">
-
         ${food.status}
-
         </span>
-
     </p>
 
     <button class="acceptBtn"
         style="background:#2e7d32;"
         onclick="acceptDonation(${food.id})">
-
         ✅ Accept Donation
-
     </button>
 
     <button class="acceptBtn"
@@ -377,27 +424,23 @@
         '${food.quantity}',
         '${food.location}',
         '${food.expiryDate}')">
-
         ✏ Edit Donation
-
     </button>
 
     <button class="acceptBtn"
         style="background:#f44336;"
         onclick="deleteDonation(${food.id})">
-
         🗑 Delete Donation
-
     </button>
 
 </div>
 
 `;
 
-    });
+            });
 
-        document.getElementById("donations").innerHTML = output;
-    }
+            document.getElementById("donations").innerHTML = output;
+        }
 
         function searchFood(){
 
@@ -447,7 +490,7 @@
 
     }
 
-        function editDonation(id, foodName, quantity, location, expiryDate){
+        function editDonation(id, foodName, quantity, foodlocation, expiryDate){
 
             let newFood = prompt("Food Name", foodName);
             if(newFood == null) return;
@@ -455,7 +498,7 @@
             let newQuantity = prompt("Quantity", quantity);
             if(newQuantity == null) return;
 
-            let newLocation = prompt("Location", location);
+            let newLocation = prompt("Location",foodlocation);
             if(newLocation == null) return;
 
             let newExpiry = prompt("Expiry Date (YYYY-MM-DD)", expiryDate);

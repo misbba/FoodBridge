@@ -2,7 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Requests</title><style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
     body{
         margin:0;
         font-family:'Poppins',sans-serif;
@@ -131,7 +137,10 @@
     .search input{
         width:320px;
         padding:15px;
-        border:none;}
+        border:none;
+        border-radius:15px;
+        font-size:16px;
+    }
     .card p{
         color:#ddd;
         line-height:30px;
@@ -206,6 +215,52 @@
 
     .footer p{
         color:#ddd;
+    }
+    @media (max-width:768px){
+
+        nav{
+            flex-direction:column;
+            gap:15px;
+            padding:15px;
+        }
+
+        nav ul{
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:15px;
+            padding:0;
+        }
+
+        .hero{
+            padding:40px 20px;
+        }
+
+        .hero h1{
+            font-size:34px;
+        }
+
+        .hero p{
+            font-size:17px;
+        }
+
+        .search{
+            flex-direction:column;
+            align-items:center;
+        }
+
+        .search input,
+        .search button{
+            width:90%;
+        }
+
+        #requests{
+            grid-template-columns:1fr;
+            padding:20px;
+        }
+
+        .footer{
+            padding:30px 20px;
+        }
     }
 </style>
 
@@ -287,31 +342,41 @@
 
     function displayRequests(data){
 
+        if(data.length===0){
+
+            document.getElementById("requests").innerHTML =
+                "<h2 style='text-align:center;color:#7CFF7C;'>No food requests found.</h2>";
+
+            return;
+        }
+
         let output = "";
 
         data.forEach(function(request){
 
             output += `
-        <div class="card">
 
-            <h2>🥣 ${request.foodNeeded}</h2>
+<div class="card">
 
-            <p><b>🆔 Request ID:</b> ${request.id}</p>
+    <h2>🥣 ${request.foodNeeded}</h2>
 
-            <p><b>👤 Requester:</b> ${request.requesterName}</p>
+    <p><b>🆔 Request ID:</b> ${request.id}</p>
 
-            <p><b>📍 Location:</b> ${request.location}</p>
+    <p><b>👤 Requester:</b> ${request.requesterName}</p>
 
-            <button class="actionBtn"
-                    style="background:#f44336;"
-                    onclick="deleteRequest(${request.id})">
+    <p><b>📍 Location:</b> ${request.location}</p>
 
-                🗑 Delete Request
+    <button class="actionBtn"
+            style="background:#f44336;"
+            onclick="deleteRequest(${request.id})">
 
-            </button>
+        🗑 Delete Request
 
-        </div>
-        `;
+    </button>
+
+</div>
+
+`;
 
         });
 

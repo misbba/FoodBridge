@@ -10,6 +10,11 @@
 
 
     <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
 
 
         body{
@@ -85,41 +90,67 @@
         }
 
         /* Navbar */
-
         nav{
-
             display:flex;
             justify-content:space-between;
             align-items:center;
-            padding:18px 8%;
-            background:rgba(255,255,255,.08);
-            backdrop-filter:blur(15px);
-
+            padding:12px 20px;
+            background:#12261a;
+            position:sticky;
+            top:0;
+            z-index:999;
         }
 
         .logo{
-
             display:flex;
             align-items:center;
             gap:12px;
-
         }
 
         .logo img{
-
             width:55px;
             height:55px;
             border-radius:50%;
             background:white;
             padding:5px;
-
         }
 
         .logo h2{
-
             color:#7CFF7C;
-
         }
+
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:25px;
+            margin:0;
+            padding:0;
+        }
+
+        nav ul li{
+            padding:12px 0;
+        }
+
+        nav ul li a{
+            color:white;
+            text-decoration:none;
+            font-size:18px;
+            font-weight:bold;
+        }
+
+        nav ul li a:hover{
+            color:#7CFF7C;
+        }
+
+        .menu-icon{
+            display:none;
+            font-size:32px;
+            color:white;
+            cursor:pointer;
+        }
+
+
+
 
         /* Main */
 
@@ -232,20 +263,64 @@
 
         @media(max-width:768px){
 
-            .container h1{
-
-                font-size:35px;
-
+            .menu-icon{
+                display:block;
             }
-            .role-card{
-                width:80%;
-            }
+
             nav{
+                flex-wrap:wrap;
+            }
 
-                justify-content:center;
+            nav ul{
+                display:none;
+                width:100%;
+                flex-direction:column;
+                text-align:center;
+                background:#163222;
+                border-radius:15px;
+                margin-top:15px;
+                padding:15px 0;
+                gap:15px;
+            }
+
+            nav ul.show{
+                display:flex;
+            }
+
+            .container{
+                padding:20px;
+            }
+
+            .container h1{
+                font-size:34px;
+            }
+
+            .container p{
+                font-size:17px;
+            }
+
+            .roles{
+                gap:20px;
+            }
+
+            .role-card{
+                width:92%;
+                max-width:320px;
+            }
+
+            .logo img{
+                width:45px;
+                height:45px;
+            }
+
+            .logo h2{
+                font-size:22px;
+            }
+
+            .footer{
+                padding:30px 20px;
             }
         }
-
     </style>
 </head>
 <body>
@@ -276,12 +351,19 @@
 <nav>
 
     <div class="logo">
-
         <img src="/images/foodbridge-logo.png">
-
         <h2>FoodBridge</h2>
-
     </div>
+
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul id="menu">
+        <li><a href="/login.html">Login</a></li>
+        <li><a href="/register.html">Register</a></li>
+    </ul>
+
 </nav>
 
 <!-- Role Selection -->
@@ -370,20 +452,28 @@
 
 </footer>
 <script>
-    window.onload=function(){
+
+    window.onload = function(){
 
         setTimeout(function(){
 
-            document.getElementById("loader").style.opacity="0";
+            document.getElementById("loader").style.opacity = "0";
 
             setTimeout(function(){
 
-                document.getElementById("loader").style.display="none";
+                document.getElementById("loader").style.display = "none";
 
             },500);
+
         },2500);
 
     };
+
+    function toggleMenu(){
+
+        document.getElementById("menu").classList.toggle("show");
+
+    }
 
 </script>
 </body>
