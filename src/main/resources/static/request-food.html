@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Food - FoodBridge</title>
 
     <style>
@@ -405,6 +406,15 @@
 
 </footer>
 <script>
+    // Fade Animation
+    document.body.style.opacity = "0";
+
+    setTimeout(function(){
+
+        document.body.style.transition = "1s";
+        document.body.style.opacity = "1";
+
+    },100);
 
     window.onload = function(){
 
@@ -420,14 +430,6 @@
 
         },2500);
 
-        document.body.style.opacity="0";
-
-        setTimeout(function(){
-
-            document.body.style.transition="1s";
-            document.body.style.opacity="1";
-
-        },100);
 
     };
 
