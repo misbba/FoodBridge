@@ -190,28 +190,22 @@
         /* Claims Cards */
 
         #claims{
-
-            display:flex;
-            flex-wrap:wrap;
-            justify-content:center;
-
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+            gap:30px;
+            max-width:1200px;
+            margin:40px auto;
+            padding:0 20px;
         }
 
         .card{
-
-            width:350px;
-            margin:20px;
-            padding:25px;
-
+            width:100%;
+            padding:20px;
             background:rgba(255,255,255,.08);
             backdrop-filter:blur(15px);
-
-            border-radius:25px;
-
-            box-shadow:0 0 25px rgba(124,255,124,.2);
-
+            border-radius:20px;
+            box-shadow:0 0 20px rgba(124,255,124,.2);
             transition:.3s;
-
         }
 
         .card:hover{
@@ -221,13 +215,11 @@
         }
 
         .card img{
-
             width:100%;
-            height:220px;
+            height:200px;
             object-fit:cover;
             border-radius:15px;
         }
-
         .card h3{
 
             color:#7CFF7C;
@@ -240,6 +232,13 @@
             font-size:16px;
             color:#ddd;
 
+        }
+        .status{
+            background:#43a047;
+            color:white;
+            padding:4px 12px;
+            border-radius:20px;
+            font-size:14px;
         }
 
         /* Footer */
@@ -383,20 +382,23 @@
     function displayClaims(data){
         let output="";
         data.forEach(function(food){
-            output+=`
-
+            output += `
 <div class="card">
-<img src="/uploads/${food.imageName}">
-<h3>${food.foodName}</h3>
-<p>🆔 <b>ID:</b> ${food.id}</p>
-<p>👤 <b>Claimer:</b> ${food.claimerName}</p>
+    <img src="/uploads/${food.imageName}" alt="${food.foodName}">
 
-<p>📍 <b>Location:</b> ${food.location}</p>
-<p>✅ <b>Status:</b> ${food.status}</p>
+    <h3>🍱 ${food.foodName}</h3>
 
+    <p>🆔 <b>ID :</b> ${food.id}</p>
+
+    <p>👤 <b>Claimer :</b> ${food.claimerName}</p>
+
+    <p>📍 <b>Location :</b> ${food.location}</p>
+
+    <p><b>Status :</b> <span class="status">${food.status}</span></p>
 </div>
-
 `;
+
+
         });
         document.getElementById("claims").innerHTML=output;
     }
