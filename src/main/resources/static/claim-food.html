@@ -7,6 +7,9 @@
     <title>Claim Food - FoodBridge</title>
 
     <style>
+        *{
+            box-sizing:border-box;
+        }
         body{
             margin:0;
             font-family:'Poppins',sans-serif;
@@ -82,14 +85,12 @@
             display:flex;
             justify-content:space-between;
             align-items:center;
-            padding:18px 8%;
-            background:rgba(255,255,255,.08);
-            backdrop-filter:blur(15px);
+            padding:12px 20px;
+            background:#12261a;
             position:sticky;
             top:0;
             z-index:999;
         }
-
         .logo{
             display:flex;
             align-items:center;
@@ -116,9 +117,15 @@
             padding:0;
         }
 
+        nav ul li{
+            padding:12px 0;
+        }
+
         nav ul li a{
-            text-decoration:none;
+            display:block;
             color:white;
+            text-decoration:none;
+            font-size:18px;
             font-weight:bold;
         }
 
@@ -209,8 +216,10 @@
                 width:100%;
                 flex-direction:column;
                 text-align:center;
+                background:#163222;
+                border-radius:15px;
                 margin-top:15px;
-                padding:0;
+                padding:15px 0;
                 gap:15px;
             }
 
@@ -219,7 +228,7 @@
             }
 
             .hero{
-                padding:40px 20px;
+                padding:30px 20px;
             }
 
             .hero h1{
@@ -231,10 +240,29 @@
             }
 
             .container{
-                width:95%;
+                max-width:500px;
+                width:92%;
                 padding:25px;
             }
+
+            .logo img{
+                width:45px;
+                height:45px;
+            }
+
+            .logo h2{
+                font-size:22px;
+            }
+            button{
+                font-size:17px;
+            }
+
+            input{
+                font-size:16px;
+            }
         }
+
+
     </style>
 
 </head>
