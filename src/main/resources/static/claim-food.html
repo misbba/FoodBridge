@@ -85,6 +85,9 @@
             padding:18px 8%;
             background:rgba(255,255,255,.08);
             backdrop-filter:blur(15px);
+            position:sticky;
+            top:0;
+            z-index:999;
         }
 
         .logo{
@@ -109,6 +112,8 @@
             display:flex;
             list-style:none;
             gap:25px;
+            margin:0;
+            padding:0;
         }
 
         nav ul li a{
@@ -119,6 +124,12 @@
 
         nav ul li a:hover{
             color:#7CFF7C;
+        }
+        .menu-icon{
+            display:none;
+            font-size:32px;
+            color:white;
+            cursor:pointer;
         }
 
         .hero{
@@ -137,7 +148,8 @@
         }
 
         .container{
-            width:500px;
+            max-width:500px;
+            width:90%;
             margin:40px auto;
             background:rgba(255,255,255,.08);
             backdrop-filter:blur(15px);
@@ -182,6 +194,47 @@
         button:hover{
             background:#66BB6A;
         }
+        @media (max-width:768px){
+
+            .menu-icon{
+                display:block;
+            }
+
+            nav{
+                flex-wrap:wrap;
+            }
+
+            nav ul{
+                display:none;
+                width:100%;
+                flex-direction:column;
+                text-align:center;
+                margin-top:15px;
+                padding:0;
+                gap:15px;
+            }
+
+            nav ul.show{
+                display:flex;
+            }
+
+            .hero{
+                padding:40px 20px;
+            }
+
+            .hero h1{
+                font-size:34px;
+            }
+
+            .hero p{
+                font-size:17px;
+            }
+
+            .container{
+                width:95%;
+                padding:25px;
+            }
+        }
     </style>
 
 </head>
@@ -208,7 +261,6 @@
 </div>
 
 <!-- Navbar -->
-
 <nav>
 
     <div class="logo">
@@ -219,23 +271,24 @@
 
     </div>
 
-    <ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <ul id="menu">
 
         <li><a href="/dashboard">Dashboard</a></li>
-
         <li><a href="/view-donations.html">Donations</a></li>
-
         <li><a href="/view-requests.html">Requests</a></li>
-
         <li><a href="/view-claims.html">Claims</a></li>
-
         <li><a href="/about.html">About</a></li>
-
         <li><a href="/logout">Logout</a></li>
 
     </ul>
 
 </nav>
+
+
 
 <!-- Hero -->
 
@@ -358,6 +411,11 @@
         alert("🤝 Food Claimed Successfully!\n\nThank you for helping distribute food to those in need.");
 
     });
+    function toggleMenu(){
+
+        document.getElementById("menu").classList.toggle("show");
+
+    }
 
 </script>
 </body>
